@@ -138,3 +138,26 @@ canvas {
   height: 100vh;
   z-index: -1; /* Lo manda detrás de todo (el texto, el gato y el botón) */
 }
+/* --- Ajustes exclusivos para Celulares --- */
+@media (max-width: 600px) {
+  h1 {
+    font-size: 1.8rem; /* Un poco más pequeño para que no se corte la palabra */
+    padding: 0 10px;
+  }
+  
+  p {
+    font-size: 1.1rem; 
+  }
+
+  img {
+    width: 70%; /* Que el michi no ocupe toda la pantalla */
+    max-width: 280px;
+  }
+
+  button {
+    font-size: 1.2rem;
+    padding: 15px 0; 
+    width: 85%; /* Botón más ancho para que sea fácil darle tap */
+    border-radius: 40px;
+  }
+}
