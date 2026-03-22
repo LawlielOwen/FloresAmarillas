@@ -1,0 +1,140 @@
+/* --- Reseteo básico --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* --- Fondo y centrado --- */
+body {
+  background-color: #000;
+  color: #fff6a8;
+  font-family: 'Arial', sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
+  padding: 20px;
+  overflow-x: hidden;
+}
+
+/* --- Título principal --- */
+h1 {
+  color: #ffdd00;
+  font-size: 2.2rem;
+  margin-bottom: 10px;
+  text-shadow: 0 0 15px rgba(255, 221, 0, 0.6); 
+  max-width: 90%;
+}
+
+/* --- Párrafo --- */
+p {
+  font-size: 1.2rem;
+  margin-bottom: 25px;
+  opacity: 0.9;
+  max-width: 90%;
+}
+
+/* --- El Gatito con Flores --- */
+img {
+  max-width: 85%; /* Responsivo: nunca será más ancho que la pantalla */
+  width: 260px; /* Tamaño base ideal */
+  height: auto;
+  margin-bottom: 35px;
+  border-radius: 15px;
+  /* Resplandor amarillo alrededor de la imagen */
+  filter: drop-shadow(0 0 18px rgba(255, 215, 0, 0.4));
+  /* Animación de flotación */
+  animation: flotar 4s ease-in-out infinite;
+}
+
+/* --- Animación para que el gato flote --- */
+@keyframes flotar {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* --- Botón Mágico --- */
+button {
+  background-color: rgba(10, 10, 10, 0.8);
+  color: #ffd700;
+  font-size: 1.2rem;
+  font-weight: bold;
+  padding: 15px 35px;
+  border: 2px solid #ffd200;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 210, 0, 0.4);
+}
+
+/* --- Efecto al pasar el mouse por el botón --- */
+button:hover {
+  background-color: #ffdd00;
+  color: #000;
+  border-color: #ff9900;
+  box-shadow: 0 0 25px rgba(255, 153, 0, 0.8);
+  transform: scale(1.05);
+}
+/* --- El Pasto --- */
+/* --- PASTO CON PICOS --- */
+.pasto {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, #1e6b1e, #32CD32); /* Colores más naturales */
+    /* Este clip-path recorta el div haciendo zig-zag en la parte superior */
+    clip-path: polygon(
+        0% 20%, 5% 0%, 10% 25%, 15% 5%, 20% 20%, 25% 0%, 30% 22%, 
+        35% 5%, 40% 20%, 45% 0%, 50% 25%, 55% 5%, 60% 20%, 65% 0%, 
+        70% 22%, 75% 5%, 80% 20%, 85% 0%, 90% 25%, 95% 5%, 100% 20%, 
+        100% 100%, 0% 100%
+    );
+}
+
+/* --- PÉTALOS CON FORMA REAL Y CAÍDA EN ZIG-ZAG --- */
+.petalo {
+    position: absolute;
+    width: 15px;
+    height: 20px;
+    background-color: #ffdd00;
+    /* Al redondear solo esquinas opuestas, creas una forma de hoja/pétalo */
+    border-radius: 50% 0 50% 0; 
+    box-shadow: inset 0 0 4px #cc9900; /* Un poco de sombra interior para volumen */
+    animation: caer 5s ease-in-out infinite;
+}
+
+/* Animación para que caiga meciéndose de lado a lado */
+@keyframes caer {
+    0% {
+        transform: translate(0, -20px) rotate(0deg);
+        opacity: 0;
+    }
+    10% {
+        opacity: 1;
+    }
+    50% {
+        transform: translate(30px, 50vh) rotate(180deg);
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        /* 100vh lo hace caer hasta el fondo de la pantalla */
+        transform: translate(-20px, 100vh) rotate(360deg);
+        opacity: 0; 
+    }
+}
+canvas {
+  position: absolute; /* Lo saca del flujo normal de la página */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Lo manda detrás de todo (el texto, el gato y el botón) */
+}
